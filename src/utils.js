@@ -1,8 +1,17 @@
 import { words } from "./words"
 
-export function getRandomWord() {
-    const randomIndex = Math.floor(Math.random() * words.length)
-    return words[randomIndex]
+export function getRandomWord(difficulty) {
+    let newWords = null
+    if (difficulty === "hard") {
+        newWords = words.filter( word => word.length >= 11 )
+    } else if (difficulty === "medium") {
+        newWords = words.filter( word => word.length < 11 && word.length > 5 )
+    } else if (difficulty === "easy") {
+        newWords = words.filter( word => word.length < 6 )
+    }
+
+    const randomIndex = Math.floor(Math.random() * newWords.length)
+    return newWords[randomIndex]
 }
 
 export function getFarewellText(language) {

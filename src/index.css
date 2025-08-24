@@ -2,6 +2,15 @@
     box-sizing: border-box;
 }
 
+@keyframes simpleFade {
+    from {
+        text-shadow: 0px 0px 3px rgba(215, 215, 215, 0);
+    }
+    to {
+        text-shadow: 0px 0px 5px rgba(215, 215, 215, 0.5);
+    }
+}
+
 body {
     margin: 0;
     font-family: "Hanken Grotesk", Arial, sans-serif;
@@ -15,6 +24,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    position: relative;
 }
 
 header {
@@ -108,6 +118,7 @@ section.word {
     justify-content: center;
     gap: 2px;
     margin-bottom: 20px;
+    flex-wrap: wrap;
 }
 
 section.word > span {
@@ -119,6 +130,7 @@ section.word > span {
     align-items: center;
     font-size: 1.125rem;
     border-bottom: 1px solid #F9F4DA;
+    margin-bottom: 10px;
 }
 
 section.word > span.missed-letter {
@@ -178,4 +190,93 @@ button.new-game {
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border: 0;
+}
+
+.settings-btn {
+    border: none;
+    background: none;
+    color: #11B5E5;
+    font-size: 2rem;
+    margin-top: 20px;
+    margin-left: 10px;
+}
+
+.settings-btn .fa {
+    animation: simpleFade 3s ease-in-out infinite alternate;
+}
+
+.settings {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 3.5em;
+    /* transition: all 1s ease-in-out; */
+    display: flex;
+    align-items: start;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.show-settings {
+    width: 100%;
+}
+
+.show-settings > div {
+    background-color: #323232;
+    padding: 10px;
+    width: 100%;
+    height: 100vh;
+    text-wrap: nowrap;
+    display: block;
+}
+
+.settings > div fieldset {
+    border: 2px solid #11B5E5;
+    color: #F9F4DA;
+    /* text-wrap: nowrap; */
+}
+
+.settings > div fieldset > legend {
+    font-weight: 600;
+    font-size: 1.7rem;
+    letter-spacing: 3px;
+    color: #11B5E5;
+}
+
+.settings > div fieldset div > label {
+    font-family: inherit;
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+
+.settings > div fieldset div > select {
+    padding: 10px;
+    margin: 10px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    border-radius: 30px;
+    width: 120px;
+    text-align: center;
+}
+
+.settings > div fieldset div > select.easy {
+    color: #10A95B;
+}
+
+.settings > div fieldset div > select.medium {
+    color: #dd791b;
+}
+
+.settings > div fieldset div > select.hard {
+    color: #BA2A2A;
+}
+
+@media(min-width: 750px) {
+    .show-settings {
+        width: 50%;
+    }
+
+    .settings > div {
+        padding: 10px 30px;
+    }
 }
